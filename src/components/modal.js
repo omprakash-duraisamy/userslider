@@ -1,6 +1,6 @@
 import { Modal, Button } from 'antd';
 import React, { Component } from 'react';
-
+import 'antd/dist/antd.css';
 class Modals extends Component {
   state = {
     ModalText: 'Content of the modal',
