@@ -1,9 +1,11 @@
 import { Modal, Button } from 'antd';
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
+import Stepper from "./stepper";
+
 class Modals extends Component {
   state = {
-    ModalText: 'Content of the modal',
+    ModalText: <Stepper />,
     visible: false,
     confirmLoading: false,
   }
@@ -45,6 +47,7 @@ class Modals extends Component {
           title="Title"
           visible={visible}
           onOk={this.handleOk}
+          width="90%"
           confirmLoading={confirmLoading}
           onCancel={this.handleCancel}
         >
@@ -54,5 +57,13 @@ class Modals extends Component {
     );
   }
 }
+
+const styles = {
+  modalStyle: {
+    fontSize: 10,
+    alignSelf: 'center',
+    color: 'red'
+  }
+};
 
 export default Modals;
