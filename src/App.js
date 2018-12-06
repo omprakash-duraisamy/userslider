@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Modals from './components/modal';
 import Stepper from './components/stepper';
-//import WrappedRegistrationForm from './components/registrationForm';
+import WrappedRegistrationForm from './components/registrationForm';
 
 class App extends Component {
   render() {
@@ -11,6 +11,7 @@ class App extends Component {
       <div>
         Hello World!!!!
         <Modals />
+        <WrappedRegistrationForm />
       </div>
     );
   }

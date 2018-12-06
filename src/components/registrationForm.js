@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import 'antd/dist/antd.css';
 import {
@@ -10,7 +9,7 @@ const Option = Select.Option;
 const AutoCompleteOption = AutoComplete.Option;
 
 const residences = [{
-  value: 'zhejiang',
+  value: 'zhejiang',  
   label: 'Zhejiang',
   children: [{
     value: 'hangzhou',
@@ -132,7 +131,7 @@ class RegistrationForm extends Component {
               required: true, message: 'Please input your E-mail!',
             }],
           })(
-            <Input />
+            <Input style={{width:"80%"}}/>
           )}
         </FormItem>
         <FormItem
@@ -146,7 +145,7 @@ class RegistrationForm extends Component {
               validator: this.validateToNextPassword,
             }],
           })(
-            <Input type="password" />
+            <Input type="password" style={{width:"80%"}}/>
           )}
         </FormItem>
         <FormItem
@@ -160,7 +159,7 @@ class RegistrationForm extends Component {
               validator: this.compareToFirstPassword,
             }],
           })(
-            <Input type="password" onBlur={this.handleConfirmBlur} />
+            <Input type="password" onBlur={this.handleConfirmBlur} style={{width:"80%"}}/>
           )}
         </FormItem>
         <FormItem
@@ -177,7 +176,7 @@ class RegistrationForm extends Component {
           {getFieldDecorator('nickname', {
             rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
           })(
-            <Input />
+            <Input style={{width:"80%"}}/>
           )}
         </FormItem>
         <FormItem
@@ -188,7 +187,7 @@ class RegistrationForm extends Component {
             initialValue: ['zhejiang', 'hangzhou', 'xihu'],
             rules: [{ type: 'array', required: true, message: 'Please select your habitual residence!' }],
           })(
-            <Cascader options={residences} />
+            <Cascader options={residences} style={{width:"80%"}}/>
           )}
         </FormItem>
         <FormItem
@@ -198,7 +197,7 @@ class RegistrationForm extends Component {
           {getFieldDecorator('phone', {
             rules: [{ required: true, message: 'Please input your phone number!' }],
           })(
-            <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+            <Input addonBefore={prefixSelector} style={{ width: '80%' }} />
           )}
         </FormItem>
         <FormItem
@@ -213,7 +212,7 @@ class RegistrationForm extends Component {
               onChange={this.handleWebsiteChange}
               placeholder="website"
             >
-              <Input />
+              <Input style={{width:"80%"}}/>
             </AutoComplete>
           )}
         </FormItem>
@@ -227,7 +226,7 @@ class RegistrationForm extends Component {
               {getFieldDecorator('captcha', {
                 rules: [{ required: true, message: 'Please input the captcha you got!' }],
               })(
-                <Input />
+                <Input style={{width:"80%"}}/>
               )}
             </Col>
             <Col span={12}>

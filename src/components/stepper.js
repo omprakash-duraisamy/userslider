@@ -1,13 +1,14 @@
 
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
-import { Steps, Button, message } from 'antd';
+import { Form, Steps, Button, message } from 'antd';
+import WrappedRegistrationForm from './registrationForm';
 
 const Step = Steps.Step;
 
 const steps = [{
   title: 'User Data',
-  content: <div><h1>Basic User Form</h1></div>,
+  content: <div><h1>Basic User Form</h1><WrappedRegistrationForm /></div>,
 }, {
   title: 'Address',
   content: <h1>ADDRESS Form</h1>,
