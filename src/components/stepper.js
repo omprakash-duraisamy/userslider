@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Steps, Button, message } from 'antd';
 import WrappedRegistrationForm from './registrationForm';
+import WrappedAddressForm from './addressForm';
 
 const Step = Steps.Step;
 
@@ -11,7 +12,7 @@ const steps = [{
   content: <div><WrappedRegistrationForm /></div>,
 }, {
   title: 'Address',
-  content: 'Address Form',
+  content: <div><WrappedAddressForm /></div>,
 }, {
   title: 'Payment Options',
   content: 'Payment Form',
