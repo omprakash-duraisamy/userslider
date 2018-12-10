@@ -8,13 +8,13 @@ const Step = Steps.Step;
 
 const steps = [{
   title: 'User Data',
-  content: <div><h1>Basic User Form</h1><WrappedRegistrationForm /></div>,
+  content: <div><WrappedRegistrationForm /></div>,
 }, {
   title: 'Address',
-  content: <h1>ADDRESS Form</h1>,
+  content: 'Address Form',
 }, {
   title: 'Payment Options',
-  content: <h1>Payment Form</h1>,
+  content: 'Payment Form',
 }];
 
 class Stepper extends Component {
@@ -40,7 +40,8 @@ class Stepper extends Component {
     return (
       <div>
         <Steps current={current}>
-          {steps.map(item => <Step key={item.title} title={item.title} />)}
+          {steps.map(item => <Step key={item.title} title={(steps[current].title==item.title)?<h1>{item.title}</h1>:item.title} />)
+        }
         </Steps>
         <div className="steps-content">{steps[current].content}</div>
         <div className="steps-action">

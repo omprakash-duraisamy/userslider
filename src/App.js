@@ -9,9 +9,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        Hello World!!!!
-        <Modals />
-        <WrappedRegistrationForm />
+        <br/><br/><br/><br/>
+        <Stepper />
       </div>
     );
   }

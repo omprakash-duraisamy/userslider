@@ -1,36 +1,11 @@
 import React, {Component} from 'react';
 import 'antd/dist/antd.css';
 import {
-  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,
+  Form, Input, Tooltip, Icon, Select, Button,
 } from 'antd';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
-
-const residences = [{
-  value: 'zhejiang',  
-  label: 'Zhejiang',
-  children: [{
-    value: 'hangzhou',
-    label: 'Hangzhou',
-    children: [{
-      value: 'xihu',
-      label: 'West Lake',
-    }],
-  }],
-}, {
-  value: 'jiangsu',
-  label: 'Jiangsu',
-  children: [{
-    value: 'nanjing',
-    label: 'Nanjing',
-    children: [{
-      value: 'zhonghuamen',
-      label: 'Zhong Hua Men',
-    }],
-  }],
-}];
 
 class RegistrationForm extends Component {
   state = {
@@ -69,19 +44,15 @@ class RegistrationForm extends Component {
     callback();
   }
 
-  handleWebsiteChange = (value) => {
-    let autoCompleteResult;
-    if (!value) {
-      autoCompleteResult = [];
-    } else {
-      autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
+  verifyPhone = (rule, value, callback) => {
+    const form = this.props.form;
+    if (value && form.getFieldValue('phone').toString().length !== 10){
+      callback('Enter a valid phone number')
     }
-    this.setState({ autoCompleteResult });
   }
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { autoCompleteResult } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -106,17 +77,12 @@ class RegistrationForm extends Component {
       },
     };
     const prefixSelector = getFieldDecorator('prefix', {
-      initialValue: '86',
+      initialValue: '+91',
     })(
       <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
+        <Option value="+91">+91</Option>
       </Select>
     );
-
-    const websiteOptions = autoCompleteResult.map(website => (
-      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    ));
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -130,6 +96,7 @@ class RegistrationForm extends Component {
             }, {
               required: true, message: 'Please input your E-mail!',
             }],
+            initialValue: "hello@gmail.com"
           })(
             <Input style={{width:"80%"}}/>
           )}
@@ -157,7 +124,7 @@ class RegistrationForm extends Component {
               required: true, message: 'Please confirm your password!',
             }, {
               validator: this.compareToFirstPassword,
-            }],
+            }]
           })(
             <Input type="password" onBlur={this.handleConfirmBlur} style={{width:"80%"}}/>
           )}
@@ -175,19 +142,9 @@ class RegistrationForm extends Component {
         >
           {getFieldDecorator('nickname', {
             rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+            initialValue: "Jhony"
           })(
             <Input style={{width:"80%"}}/>
-          )}
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Habitual Residence"
-        >
-          {getFieldDecorator('residence', {
-            initialValue: ['zhejiang', 'hangzhou', 'xihu'],
-            rules: [{ type: 'array', required: true, message: 'Please select your habitual residence!' }],
-          })(
-            <Cascader options={residences} style={{width:"80%"}}/>
           )}
         </FormItem>
         <FormItem
@@ -195,54 +152,17 @@ class RegistrationForm extends Component {
           label="Phone Number"
         >
           {getFieldDecorator('phone', {
-            rules: [{ required: true, message: 'Please input your phone number!' }],
+            rules: [{ required: true, message: 'Please input your phone number!' },
+            {
+              validator: this.verifyPhone
+            }],
+            initialValue: 9790434518
           })(
             <Input addonBefore={prefixSelector} style={{ width: '80%' }} />
           )}
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Website"
-        >
-          {getFieldDecorator('website', {
-            rules: [{ required: true, message: 'Please input website!' }],
-          })(
-            <AutoComplete
-              dataSource={websiteOptions}
-              onChange={this.handleWebsiteChange}
-              placeholder="website"
-            >
-              <Input style={{width:"80%"}}/>
-            </AutoComplete>
-          )}
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Captcha"
-          extra="We must make sure that your are a human."
-        >
-          <Row gutter={8}>
-            <Col span={12}>
-              {getFieldDecorator('captcha', {
-                rules: [{ required: true, message: 'Please input the captcha you got!' }],
-              })(
-                <Input style={{width:"80%"}}/>
-              )}
-            </Col>
-            <Col span={12}>
-              <Button>Get captcha</Button>
-            </Col>
-          </Row>
-        </FormItem>
         <FormItem {...tailFormItemLayout}>
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>I have read the <a href="">agreement</a></Checkbox>
-          )}
-        </FormItem>
-        <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">Register</Button>
+          <Button type="primary" htmlType="submit">Save</Button>
         </FormItem>
       </Form>
     );
