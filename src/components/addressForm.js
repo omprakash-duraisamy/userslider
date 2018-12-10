@@ -136,7 +136,7 @@ class AddressForm extends Component {
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">Save</Button>
+          <Button type="primary" icon="save" htmlType="submit">Save</Button>
         </FormItem>
       </Form>
     );

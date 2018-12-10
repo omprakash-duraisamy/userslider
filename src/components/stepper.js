@@ -41,26 +41,26 @@ class Stepper extends Component {
     return (
       <div>
         <Steps current={current}>
-          {steps.map(item => <Step key={item.title} title={(steps[current].title==item.title)?<h1>{item.title}</h1>:item.title} />)
+          {steps.map(item => <Step key={item.title} title={(steps[current].title==item.title)?<h2>{item.title}</h2>:item.title} />)
         }
         </Steps>
         <div className="steps-content">{steps[current].content}</div>
         <div className="steps-action">
           {
+            current > 0
+            && (
+            <Button icon="arrow-left" style={{ marginLeft: 8 }} onClick={() => this.prev()}>
+              Prev
+            </Button>
+            )
+          }
+          {
             current < steps.length - 1
-            && <Button type="primary" onClick={() => this.next()}>Next</Button>
+            && <Button type="primary" style={{ marginLeft: 8 }} icon="arrow-right" onClick={() => this.next()}>Next</Button>
           }
           {
             current === steps.length - 1
-            && <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
-          }
-          {
-            current > 0
-            && (
-            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-              Previous
-            </Button>
-            )
+            && <Button type="primary" style={{ marginLeft: 8 }} icon="file-done" onClick={() => message.success('Processing complete!')}>Done</Button>
           }
         </div>
       </div>

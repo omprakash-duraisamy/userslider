@@ -8,7 +8,7 @@ import WrappedRegistrationForm from './components/registrationForm';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{padding:'20px'}}>
         <br/><br/><br/><br/>
         <Stepper />
       </div>
