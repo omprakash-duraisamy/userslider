@@ -1,0 +1,6 @@
+.ant-table-row-expanded:after {
+    content: '˅';
+  }
+  .ant-table-row-collapsed:after {
+    content: '>';
+  }

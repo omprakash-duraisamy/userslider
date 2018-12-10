@@ -21,12 +21,13 @@ class AddressForm extends Component {
       }
     });
   }
-
+  
   verifyPhone = (rule, value, callback) => {
     const form = this.props.form;
     if (value && form.getFieldValue('phone').toString().length !== 10){
       callback('Enter a valid phone number')
     }
+    callback();
   }
 
   render() {
@@ -64,6 +65,19 @@ class AddressForm extends Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
+      <FormItem
+          {...formItemLayout}
+          label="Name"
+        >
+          {getFieldDecorator('name', {
+            rules: [{
+              required: true, message: 'Please input your Name!',
+            }],
+            initialValue: "Random Name"
+          })(
+            <Input style={{width:"80%"}}/>
+          )}
+        </FormItem>
         <FormItem
           {...formItemLayout}
           label="Address Line 1"
@@ -94,11 +108,24 @@ class AddressForm extends Component {
           {...formItemLayout}
           label="City/Town"
         >
-          {getFieldDecorator('city-town', {
+          {getFieldDecorator('city/town', {
             rules: [{
               required: true, message: 'Please enter your City/Town!',
             }],
             initialValue: "Random City/Town"
+          })(
+            <Input style={{width:"80%"}}/>
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="State"
+        >
+          {getFieldDecorator('state', {
+            rules: [{
+              required: true, message: 'Please input your State!',
+            }],
+            initialValue: "Random State"
           })(
             <Input style={{width:"80%"}}/>
           )}

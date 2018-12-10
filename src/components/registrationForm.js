@@ -49,6 +49,7 @@ class RegistrationForm extends Component {
     if (value && form.getFieldValue('phone').toString().length !== 10){
       callback('Enter a valid phone number')
     }
+    callback();
   }
 
   render() {

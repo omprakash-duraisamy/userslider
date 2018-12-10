@@ -1,9 +1,9 @@
-
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Steps, Button, message } from 'antd';
 import WrappedRegistrationForm from './registrationForm';
 import WrappedAddressForm from './addressForm';
+import AddressPage from './addressPage';
 
 const Step = Steps.Step;
 
