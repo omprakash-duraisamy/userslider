@@ -27,13 +27,14 @@ render()
     const rowSelection = {
             selectedRowKeys,
             onChange: (selectedRowKeys, selectedRows) => {
-                if(selectedRows.length!=0){
-                if(selectedRows[0].key != undefined){
+                if(selectedRows.length!==0){
+                if(selectedRows[0].key !== undefined){
+                  this.setState({selectedRowKeys})
                     console.log(selectedRows[0].key);
                 }
                 }
             },
-                type: "radio" 
+                type: "radio"
         };
 
   
@@ -53,6 +54,7 @@ render()
     expandedRowRender={record => <WrappedAddressForm record={record} />}
     dataSource={data}
     scroll={{ x: 1300 }}
+    showHeader={false}
   />
   );
   }
@@ -64,3 +66,4 @@ export default AddressForm;
 //--Row selection--
 //https://stackoverflow.com/questions/51703354/how-to-add-a-radiobutton-to-select-a-row-with-ant-design-table
 //https://github.com/ant-design/ant-design/issues/9846
+//https://github.com/ant-design/ant-design/blob/master/components/table/demo/row-selection-custom.md

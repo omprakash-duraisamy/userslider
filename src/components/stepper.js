@@ -44,7 +44,7 @@ class Stepper extends Component {
     return (
       <div>
         <Steps current={current}>
-          {steps.map(item => <Step key={item.title} title={(steps[current].title==item.title)?<h2>{item.title}</h2>:item.title} />)
+          {steps.map(item => <Step key={item.title} title={(steps[current].title===item.title)?<h2>{item.title}</h2>:item.title} />)
         }
         </Steps>
         <div className="steps-content">{steps[current].content}</div>
