@@ -35,7 +35,15 @@ class RegistrationForm extends Component {
       callback();
     }
   }
-
+  validateDateOfBirth = (rule, value, callback) => {
+      const form = this.props.form;
+    var dob = new Date(form.getFieldValue('dob'));
+    var today = new Date();
+    if(dob>today){
+        callback('DOB can\'t be a future date!');
+    }
+    callback();
+  }
   validateToNextPassword = (rule, value, callback) => {
     const form = this.props.form;
     if (value && this.state.confirmDirty) {
@@ -99,7 +107,33 @@ class RegistrationForm extends Component {
             }],
             initialValue: "hello@gmail.com"
           })(
-            <Input style={{width:"80%"}}/>
+            <Input style={{width:"80%"}} disabled/>
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Date of Birth"
+        >
+          {getFieldDecorator('dob', {
+            rules: [{
+              required: true, message: 'Please input your DOB!',
+            }, {
+              validator: this.validateDateOfBirth,
+            }],
+          })(
+            <Input type="date" style={{width:"80%"}} max={new Date()}/>
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Age"
+        >
+          {getFieldDecorator('age', {
+            rules: [{
+              required: true, message: 'Please input your age!',
+            }],
+          })(
+            <Input style={{width:"80%"}} max={new Date()}/>
           )}
         </FormItem>
         <FormItem
@@ -159,7 +193,7 @@ class RegistrationForm extends Component {
             }],
             initialValue: 9790434518
           })(
-            <Input addonBefore={prefixSelector} style={{ width: '80%' }} />
+            <Input addonBefore={prefixSelector} style={{ width: '80%' }} disabled />
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>

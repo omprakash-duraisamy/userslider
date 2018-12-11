@@ -9,10 +9,10 @@ const Option = Select.Option;
 
 class AddressForm extends Component {
   state = {
+    data: this.props.record,
     confirmDirty: false,
     autoCompleteResult: [],
   };
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -73,7 +73,7 @@ class AddressForm extends Component {
             rules: [{
               required: true, message: 'Please input your Name!',
             }],
-            initialValue: "Random Name"
+            initialValue: this.state.data.name
           })(
             <Input style={{width:"80%"}}/>
           )}
@@ -86,7 +86,7 @@ class AddressForm extends Component {
             rules: [{
               required: true, message: 'Please input your Address!',
             }],
-            initialValue: "Random Address Line 1"
+            initialValue: this.state.data.address1
           })(
             <Input style={{width:"80%"}}/>
           )}
@@ -99,7 +99,7 @@ class AddressForm extends Component {
             rules: [{
               required: true, message: 'Please input your Address Line 2!',
             }],
-            initialValue: "Random Address Line 2"
+            initialValue: this.state.data.address2
           })(
             <Input style={{width:"80%"}}/>
           )}
@@ -112,7 +112,7 @@ class AddressForm extends Component {
             rules: [{
               required: true, message: 'Please enter your City/Town!',
             }],
-            initialValue: "Random City/Town"
+            initialValue: this.state.data.city_town
           })(
             <Input style={{width:"80%"}}/>
           )}
@@ -125,7 +125,7 @@ class AddressForm extends Component {
             rules: [{
               required: true, message: 'Please input your State!',
             }],
-            initialValue: "Random State"
+            initialValue: this.state.data.state
           })(
             <Input style={{width:"80%"}}/>
           )}
@@ -143,7 +143,7 @@ class AddressForm extends Component {
         >
           {getFieldDecorator('pincode', {
             rules: [{ required: true, message: 'Please input your pincode!', whitespace: true }],
-            initialValue: "638052"
+            initialValue: this.state.data.pincode
           })(
             <Input style={{width:"80%"}}/>
           )}
@@ -157,7 +157,7 @@ class AddressForm extends Component {
             {
               validator: this.verifyPhone
             }],
-            initialValue: 9790434518
+            initialValue: this.state.data.phone
           })(
             <Input addonBefore={prefixSelector} style={{ width: '80%' }} />
           )}

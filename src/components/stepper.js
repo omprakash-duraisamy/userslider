@@ -9,12 +9,15 @@ const Step = Steps.Step;
 
 const steps = [{
   title: 'User Data',
-  content: <div><WrappedRegistrationForm /></div>,
+  content: <div><WrappedRegistrationForm /></div>
+//    content:<AddressPage/>
 }, {
   title: 'Address',
-  content: <div><WrappedAddressForm /></div>,
+  content:<AddressPage/>
+//  content: <div><WrappedAddressForm /></div>,
 }, {
   title: 'Payment Options',
+//  content:<AddressPage/>
   content: 'Payment Form',
 }];
 
