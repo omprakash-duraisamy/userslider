@@ -126,14 +126,17 @@ class RegistrationForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Age"
+          label="Gender"
         >
-          {getFieldDecorator('age', {
+          {getFieldDecorator('gender', {
             rules: [{
-              required: true, message: 'Please input your age!',
+              required: true, message: 'Please input your Gender!',
             }],
           })(
-            <Input style={{width:"80%"}} max={new Date()}/>
+            <Select style={{width:"80%"}}>
+              <Option value="male" selected>Male</Option>
+              <Option value="female">Female</Option>
+            </Select>
           )}
         </FormItem>
         <FormItem

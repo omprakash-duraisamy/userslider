@@ -5,6 +5,9 @@ import '../Styles/TableStyle.css';
 import WrappedAddressForm from './addressForm';
 
 class AddressForm extends Component {
+  state={
+    selectedRowKeys:[1],
+  };
   
 render()
 {
@@ -20,8 +23,9 @@ render()
       title: 'Action', dataIndex: '', key: 'x', render: () => <a href="javascript:;">Delete</a>
     },
   ];
-  
+    const {selectedRowKeys} = this.state;
     const rowSelection = {
+            selectedRowKeys,
             onChange: (selectedRowKeys, selectedRows) => {
                 if(selectedRows.length!=0){
                 if(selectedRows[0].key != undefined){
@@ -31,6 +35,7 @@ render()
             },
                 type: "radio" 
         };
+
   
   const data = [
     {
